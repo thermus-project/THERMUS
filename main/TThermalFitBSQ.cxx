@@ -34,7 +34,7 @@ TTMThermalFitBSQ::TTMThermalFitBSQ():TTMThermalFit()
 }
 
 //__________________________________________________________________________
-TTMThermalFitBSQ::TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par, char *file):TTMThermalFit() 
+TTMThermalFitBSQ::TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par, const char *file):TTMThermalFit() 
 {
   fDescriptor = "GCanonical";
   fParm = par;

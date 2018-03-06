@@ -142,7 +142,7 @@ TTMYield* TTMThermalFit::GetYield(Int_t id1,Int_t id2,TString descr)
 }
 
 //__________________________________________________________________________
-void TTMThermalFit::InputExpYields(char *file)
+void TTMThermalFit::InputExpYields(const char *file)
 {
   // Inserts the experimental yields listed in the specified file 
   // in *fYields.

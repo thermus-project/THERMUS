@@ -65,7 +65,7 @@ class TTMThermalFit:public TObject {
   
   virtual TTMParameterSet* GetParameterSet() = 0;
 
-  void InputExpYields(char *file);
+  void InputExpYields(const char *file);
   void FitData(Int_t flag = 0);
   void GenerateYields();
 

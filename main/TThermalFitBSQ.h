@@ -48,7 +48,7 @@ class TTMThermalFitBSQ:public TTMThermalFit {
  public:
 
   TTMThermalFitBSQ();
-  TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par, char *file);
+  TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par, const char *file);
    
   ~TTMThermalFitBSQ();
 

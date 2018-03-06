@@ -23,7 +23,7 @@ test        - exemples and basic tests
 Environment variables
 =====================
 
-The environment variables ROOTSYS and THERMUS should be set
+The environment variables ROOTSYS and THERMUS should be set and exported
 respectively with the proper <pathnames> (checked by cmakethermus.sh):
     $ROOTSYS should point to the directory of the root installation
     $THERMUS should point to the directory containing the THERMUS code
