@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# checked on 30/01/2018 with root-v6-12-04 (B.H.)
+# # checked 07/03/2018 with root-v6-12-06 (B.H.)
 export BASEDIR=$(pwd)
 export ROOTDIR=$BASEDIR/root
 cd $ROOTDIR
