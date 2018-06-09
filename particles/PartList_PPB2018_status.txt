@@ -1,5 +1,0 @@
-f0(1370) decays modified: rho + rho dominant whereas now only pi+pi- or 2pi0
-pi1(1400) to be checked: actually line 431 & 433
-eta(1405) is still missing: is it eta(1440) ?!?
-a0(1450), line 179, not sure how the decay channel were defined
-rho3(1690)+ same problem as confirmed by Jean
