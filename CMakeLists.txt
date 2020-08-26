@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8 FATAL_ERROR)
 project (Thermus)
-# checked on 30/01/2018 with root-v6-12-04 (B.H.)
+# checked on 27/08/2020 with root-v6-22-02 (B.H.)
 
 # Find GSL
 FIND_PACKAGE( GSL REQUIRED )
@@ -17,12 +17,12 @@ endif ( NOT ROOT_FOUND )
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
 
-set(CMAKE_MODULE_PATH $ENV{ROOTSYS}/cmake/modules)
-include(RootInstallDirs)
-
 SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 SET (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+SET (CMAKE_INSTALL_BINDIR ${CMAKE_BINARY_DIR}/bin)
+SET (CMAKE_INSTALL_LIBDIR ${CMAKE_BINARY_DIR}/lib)
 
 include_directories("include" "main" ${ROOT_INCLUDE_DIRS} ${GSL_INCLUDE_DIRS})
 
