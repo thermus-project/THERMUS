@@ -33,9 +33,10 @@ Compiling THERMUS and running test programs
 
 Configuration and compilation should be done using CMake: source cmakethermus.sh
 (Please note that the provided makefiles are not recommended).
+
 For using THERMUS, a ROOT version >= 6 compiled from source is necessary:
 you can obtain the source via: git clone http://root.cern.ch/git/root.git root
 please look at cmakeroot.sh as an example for properly building and installing root
 Note that a rootlogon.C loading THERMUS Shared Object (.so) libraries is also provided.
 
-
+A simple example script is available in the test directory
