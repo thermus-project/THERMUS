@@ -61,6 +61,7 @@ class TTMParticle: public TNamed{
   Double_t fbContent;	       // |b_i|= #b + #b-bar quarks
   Double_t fTContent;	       // |T_i|= #t + #t-bar quarks
 
+  Bool_t fDecayChainProcessed; // V.Vovchenko (integrating decay chain for unstable particles)
   TList* fDecaySummary;        // pointer to summary list of decays
   TList* fDecayChannels;       // pointer to list of decay channels
 
@@ -100,6 +101,9 @@ class TTMParticle: public TNamed{
   void SetbContent(Double_t x) {fbContent = x;}
   void SetTContent(Double_t x) {fTContent = x;}
 
+
+  void SetDecayChainProcessed(Bool_t x) { fDecayChainProcessed = x;}    // V.Vovchenko (integrating decay chain for unstable particles)
+
   void SetDecayChannels(const char *file, Bool_t ScaleBRatios = false);
   void SetDecayChannels(TList* x);
 
@@ -133,6 +137,8 @@ class TTMParticle: public TNamed{
   Double_t GetCContent() const {return fCContent;}
   Double_t GetbContent() const {return fbContent;}
   Double_t GetTContent() const {return fTContent;}
+
+  Bool_t GetDecayChainProcessed() const {return fDecayChainProcessed;}     // V.Vovchenko (integrating decay chain for unstable particles)
 
   TList* GetDecaySummary() const {return fDecaySummary;};
   TList* GetDecayChannels() const {return fDecayChannels;};

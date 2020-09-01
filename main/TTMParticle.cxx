@@ -45,6 +45,7 @@ TTMParticle::TTMParticle()
   fRadius = 0.;
   fDecaySummary = new TList();
   fDecayChannels = new TList();
+  fDecayChainProcessed = false;    // V.Vovchenko (integrating decay chain for unstable particles)
 }
 
 //__________________________________________________________________________
@@ -329,6 +330,8 @@ void TTMParticle::UpdateDecaySummary()
   // Updates the fDecaySummary summary list from the fDecayChannels list by 
   // iterating over these channels. Uses GetDecay().
   //
+
+  fDecayChainProcessed = false;    // V.Vovchenko (integrating decay chain for unstable particles)
 
   fDecaySummary->Delete();
   
