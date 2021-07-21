@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# checked on 27/08/2020 with root-v6-22-02 (B.H.)
+# checked on 20/07/2021 with root-v6-24-02 (B.H.)
 echo $THERMUS
 export BASEDIR=$(pwd)
 #
@@ -11,7 +11,8 @@ cd $THERMUS
 rm -rf build
 mkdir build
 cd build
-cmake -Wdev -debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
+#cmake -Wdev -debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
+cmake -Wdev --debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
 cmake --build . -- -j10
 cd $BASEDIR
 #
