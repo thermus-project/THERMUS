@@ -1,6 +1,6 @@
-cmake_minimum_required (VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.21 FATAL_ERROR)
 project (Thermus)
-# checked on 27/08/2020 with root-v6-22-02 (B.H.)
+# checked on 20/07/2021 with root-v6-24-02 (B.H.)
 
 # Find GSL
 FIND_PACKAGE( GSL REQUIRED )
