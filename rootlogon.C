@@ -1,5 +1,5 @@
 // rootlogon.C for loading THERMUS shared object libraries
-// checked on 10/02/2018 with root-v6-12-04 (B.H.)
+// checked on 20/07/2021 with root-v6-24-02 (B.H.)
 
 {
   TString sProgName = gProgName;
@@ -74,7 +74,7 @@
   // Start of Config aliroot
   if(SwitchThermus && ((!sProgName.CompareTo("root.exe"))||(!sProgName.CompareTo("root"))) ){
     printf(" *** Info: Root setup: \t THERMUS is included \t ***\n");
-    gSystem->SetIncludePath("-I$THERMUS/particles  \
+    gSystem->AddIncludePath("-I$THERMUS/particles  \
                               -I$THERMUS/main");
     gSystem->Load("$THERMUS/build/lib/libFunctions.so");
     gSystem->Load("$THERMUS/build/lib/libTHERMUS.so");
