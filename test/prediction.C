@@ -24,7 +24,7 @@ void prediction(){
   // **************************************************
   // First, definition the particle list
   // and their properties (and decays):
-  TTMParticleSet set("particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
+  TTMParticleSet set("particles/PartList_PPB2021_CBHN.txt",true); // -> still OK !!!
 
   set.InputDecays("particles");  // here true means the decays are scaled to sum(BR) = 100%
   // **************************************************
