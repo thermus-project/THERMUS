@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# checked on 14/09/2021 with root-v6-24-06 (B.H.)
+# checked on 05/10/2022 with root-v6-26-06 (B.H.)
 echo $THERMUS
 export BASEDIR=$(pwd)
 #
