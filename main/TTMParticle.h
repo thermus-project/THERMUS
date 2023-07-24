@@ -56,6 +56,7 @@ class TTMParticle: public TNamed{
   Double_t fThresholdCalc;     // calculated threshold	
   Bool_t fThresholdFlag;       // true if threshold has been calculated
 
+  Double_t fBContent;          // |B_i|= #B + #B-bar quarks
   Double_t fSContent;          // |S_i|= #s + #s-bar quarks
   Double_t fCContent;	       // |C_i|= #c + #c-bar quarks
   Double_t fbContent;	       // |b_i|= #b + #b-bar quarks
@@ -96,14 +97,14 @@ class TTMParticle: public TNamed{
 
   void SetThresholdFlag(Bool_t x) {fThresholdFlag = x;}
 
+  void SetBContent(Double_t x) {fBContent = x;}
   void SetSContent(Double_t x) {fSContent = x;}
   void SetCContent(Double_t x) {fCContent = x;}
   void SetbContent(Double_t x) {fbContent = x;}
   void SetTContent(Double_t x) {fTContent = x;}
 
-
-  void SetDecayChainProcessed(Bool_t x) { fDecayChainProcessed = x;}    // V.Vovchenko (integrating decay chain for unstable particles)
-
+   void SetDecayChainProcessed(Bool_t x) { fDecayChainProcessed = x;}    // V.Vovchenko (integrating decay chain for unstable particles)
+   
   void SetDecayChannels(const char *file, Bool_t ScaleBRatios = false);
   void SetDecayChannels(TList* x);
 
@@ -133,13 +134,14 @@ class TTMParticle: public TNamed{
 
   Bool_t GetThresholdFlag() const {return fThresholdFlag;}
 
+  Double_t GetBContent() const {return fBContent;}
   Double_t GetSContent() const {return fSContent;}
   Double_t GetCContent() const {return fCContent;}
   Double_t GetbContent() const {return fbContent;}
   Double_t GetTContent() const {return fTContent;}
 
-  Bool_t GetDecayChainProcessed() const {return fDecayChainProcessed;}     // V.Vovchenko (integrating decay chain for unstable particles)
-
+   Bool_t GetDecayChainProcessed() const {return fDecayChainProcessed;}     // V.Vovchenko (integrating decay chain for unstable particles)
+   
   TList* GetDecaySummary() const {return fDecaySummary;};
   TList* GetDecayChannels() const {return fDecayChannels;};
 

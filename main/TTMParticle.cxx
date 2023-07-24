@@ -45,7 +45,6 @@ TTMParticle::TTMParticle()
   fRadius = 0.;
   fDecaySummary = new TList();
   fDecayChannels = new TList();
-  fDecayChainProcessed = false;    // V.Vovchenko (integrating decay chain for unstable particles)
 }
 
 //__________________________________________________________________________
@@ -68,6 +67,7 @@ TTMParticle::TTMParticle(const TTMParticle &obj)
   fRadius = obj.GetRadius();
   fThresholdCalc = obj.GetThresholdCalc();
   fThresholdFlag = obj.GetThresholdFlag();
+  fBContent = obj.GetBContent();
   fSContent = obj.GetSContent();
   fCContent = obj.GetCContent();
   fbContent = obj.GetbContent();
@@ -331,8 +331,6 @@ void TTMParticle::UpdateDecaySummary()
   // iterating over these channels. Uses GetDecay().
   //
 
-  fDecayChainProcessed = false;    // V.Vovchenko (integrating decay chain for unstable particles)
-
   fDecaySummary->Delete();
   
   TIter nch(fDecayChannels);
@@ -444,6 +442,7 @@ TTMParticle& TTMParticle::operator=(const TTMParticle& obj)
   fRadius = obj.GetRadius();
   fThresholdCalc = obj.GetThresholdCalc();
   fThresholdFlag = obj.GetThresholdFlag();
+  fBContent = obj.GetBContent();
   fSContent = obj.GetSContent();
   fCContent = obj.GetCContent();
   fbContent = obj.GetbContent();
