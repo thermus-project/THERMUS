@@ -78,6 +78,7 @@ add_library(THERMUS SHARED
  ../main/TTMParameterSetBQ.cxx
  ../main/TTMParameterSetBSQ.cxx
  ../main/TTMParameterSetCanBSQ.cxx
+ ../main/TTMParameterSetSQ.cxx
  ../main/TTMParticle.cxx
  ../main/TTMParticleSet.cxx
  ../main/TTMYield.cxx
@@ -85,14 +86,17 @@ add_library(THERMUS SHARED
  ../main/TThermalFitBQ.cxx
  ../main/TThermalFitBSQ.cxx
  ../main/TThermalFitCanBSQ.cxx
+ ../main/TThermalFitSQ.cxx
  ../main/TThermalModel.cxx
  ../main/TThermalModelBQ.cxx
  ../main/TThermalModelBSQ.cxx
  ../main/TThermalModelCanBSQ.cxx
+ ../main/TThermalModelSQ.cxx
  ../main/TThermalParticle.cxx
  ../main/TThermalParticleBQ.cxx
  ../main/TThermalParticleBSQ.cxx
  ../main/TThermalParticleCanBSQ.cxx
+ ../main/TThermalParticleSQ.cxx
  ../main/ThermusDict.cxx
  )
 
