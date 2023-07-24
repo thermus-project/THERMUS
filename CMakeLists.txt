@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.21 FATAL_ERROR)
 project (Thermus VERSION 4.0 DESCRIPTION "Thermus v4.0")
-# checked on 14/09/2021 with root-v6-24-06 (B.H.)
+# checked on 24/07/2023 with root-v6-28-04 (B.H.)
 
 # Find GSL
 FIND_PACKAGE( GSL REQUIRED )
