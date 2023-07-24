@@ -13,6 +13,7 @@ mkdir build
 cd build
 #cmake -Wdev -debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
 cmake -Wdev --debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
+#
 cmake --build . -- -j10
 cd $BASEDIR
 #

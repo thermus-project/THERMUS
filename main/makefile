@@ -1,4 +1,4 @@
-######################
+#########################
 ARCH          = $(shell root-config --arch)
 
 CXX           =
@@ -9,7 +9,7 @@ DllSuf        = so
 OutPutOpt     = -o 
 
 ROOTCFLAGS   := $(shell root-config --cflags)
-ROOTLIBS     := $(shell root-config --libs) -lMinuit
+ROOTLIBS     := $(shell root-config --libs)
 ROOTGLIBS    := $(shell root-config --glibs)
 
 
@@ -25,69 +25,16 @@ endif
 
 
 CXXFLAGS     += $(ROOTCFLAGS)
-CXXFLAGS     += -I$(THERMUS)/main -I$(THERMUS)/include
-LIBS          = $(ROOTLIBS) $(SYSLIBS)
+CXXFLAGS     += -I$(THERMUS)/main -I$(THERMUS)/include -I$(THERMUS)/nrc
+LIBS          = $(ROOTLIBS) $(SYSLIBS) -L/usr/local/lib -lgsl -lgslcblas -lm
 GLIBS         = $(ROOTGLIBS) $(SYSLIBS)
 
 #------------------------------------------------------------------------------
 
 
-SEP_CLASSESO    = $(THERMUS)/main/TTMParticle.$(ObjSuf) \
-		  $(THERMUS)/main/TTMDecay.$(ObjSuf) \
-		  $(THERMUS)/main/TTMParticleSet.$(ObjSuf) \
-		  $(THERMUS)/main/TTMParameter.$(ObjSuf) \
-		  $(THERMUS)/main/TTMParameterSet.$(ObjSuf) \
-		  $(THERMUS)/main/TTMParameterSetBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TTMParameterSetBQ.$(ObjSuf) \
-		  $(THERMUS)/main/TTMParameterSetCanBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalParticle.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalParticleBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalParticleBQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalParticleCanBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalModel.$(ObjSuf) \
-		  $(THERMUS)/main/TTMYield.$(ObjSuf) \
-		  $(THERMUS)/main/TTMDensObj.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalModelBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalModelBQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalModelCanBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalFit.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalFitBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalFitBQ.$(ObjSuf) \
-		  $(THERMUS)/main/TThermalFitCanBSQ.$(ObjSuf) \
-		  $(THERMUS)/main/TTMIDObj.$(ObjSuf) \
-		  $(THERMUS)/main/TTMDecayChannel.$(ObjSuf) \
-
-CLASSDICTO	= $(THERMUS)/main/ClassesDict.$(ObjSuf)
-
-SEP_CLASSESS    = $(THERMUS)/main/TTMParticle.$(SrcSuf) \
-		  $(THERMUS)/main/TTMDecay.$(SrcSuf) \
-		  $(THERMUS)/main/TTMParticleSet.$(SrcSuf) \
-		  $(THERMUS)/main/TTMParameter.$(SrcSuf) \
-		  $(THERMUS)/main/TTMParameterSet.$(SrcSuf) \
-		  $(THERMUS)/main/TTMParameterSetBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TTMParameterSetBQ.$(SrcSuf) \
-		  $(THERMUS)/main/TTMParameterSetCanBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalParticle.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalParticleBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalParticleBQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalParticleCanBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalModel.$(SrcSuf) \
-		  $(THERMUS)/main/TTMYield.$(SrcSuf) \
-		  $(THERMUS)/main/TTMDensObj.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalModelBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalModelBQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalModelCanBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalFit.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalFitBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalFitBQ.$(SrcSuf) \
-		  $(THERMUS)/main/TThermalFitCanBSQ.$(SrcSuf) \
-		  $(THERMUS)/main/TTMIDObj.$(SrcSuf) \
-		  $(THERMUS)/main/TTMDecayChannel.$(SrcSuf) \
-
-CLASSDICTS	= $(THERMUS)/main/ClassesDict.$(SrcSuf)
-
 SEP_CLASSESH	= $(THERMUS)/main/TTMParticle.h \
 		  $(THERMUS)/main/TTMDecay.h \
+		  $(THERMUS)/main/TTMDecayChannel.h \
 		  $(THERMUS)/main/TTMParticleSet.h \
 		  $(THERMUS)/main/TTMParameter.h \
 		  $(THERMUS)/main/TTMParameterSet.h \
@@ -109,21 +56,145 @@ SEP_CLASSESH	= $(THERMUS)/main/TTMParticle.h \
 		  $(THERMUS)/main/TThermalFitBQ.h \
 		  $(THERMUS)/main/TThermalFitCanBSQ.h \
 		  $(THERMUS)/main/TTMIDObj.h \
-		  $(THERMUS)/main/TTMDecayChannel.h \
 
-THERMALSO	= $(THERMUS)/lib/libTHERMUS.$(DllSuf)
+FNCSO        	= BQConstrainQ.o \
+		  BSQConstrainS.o \
+		  BSQConstrainQ.o \
+		  BSQConstrainSQ.o \
+		  BSQConstrainSQC.o \
+		  BSQConstrainSQCb.o \
+		  BSQConstrainBSQ.o \
+		  BSQConstrainQQ.o \
+		  BSQConstrainSQEN.o \
+		  BSQConstrainSEN.o \
+		  BSQConstrainSQST3.o \
+		  BSQConstrainSST3.o \
+		  BSQConstrainSQPercolation.o \
+		  BSQConstrainSPercolation.o \
+		  BQConstrainEN.o \
+		  BQConstrainQEN.o \
+		  BQConstrainST3.o \
+		  BQConstrainBDens.o \
+		  BQConstrainQST3.o \
+	  	  BQConstrainQBDens.o \
+	  	  BQConstrainQNetBDens.o \
+		  BQConstrainQPercolation.o \
+		  BSQConstrainSBDens.o \
+		  BSQConstrainSQBDens.o \
+		  BSQConstrainSQNetBDens.o \
+		  BQfuncEN.o \
+          BQfuncQEN.o \
+          BQfuncST3.o \
+          BQfuncBDens.o \
+          BQfuncQST3.o \
+          BQfuncQBDens.o \
+          BQfuncQNetBDens.o \
+		  BQfuncQ.o \
+		  BQfuncQPercolation.o \
+		  BSQfuncSQPercolation.o \
+		  BSQfuncSPercolation.o \
+	      BSQfuncS.o \
+          BSQfuncQ.o \
+		  BSQfuncSQ.o \
+		  BSQfuncSQC.o \
+		  BSQfuncSQCb.o \
+		  BSQfuncBSQ.o \
+		  BSQfuncQQ.o \
+		  BSQfuncSQEN.o \
+		  BSQfuncSEN.o \
+		  BSQfuncSQST3.o \
+		  BSQfuncSST3.o \
+		  BSQfuncSBDens.o \
+		  BSQfuncSQBDens.o \
+		  BSQfuncSQNetBDens.o \
+		  fit_function.o \
+		  Minuit_function.o \
+		  Functions.o \
+		  BSQCanonicalFncs.o \
+		  IntegrationRoutines.o \
+		  IntegrationRoutines2D.o \
+		  Int_2_String.o \
+		  FindExclVolPressure.o \
+          ExclVolPressureFunc.o \
+          broyden.o \
+          broydens.o \
+          brent.o
 
-OBJS          	= $(SEP_CLASSESO) $(CLASSDICTO)  
-PROGRAMS      	= $(THERMALSO)
+
+FNCSS   = BQConstrainQ.cxx \
+		  BSQConstrainS.cxx \
+		  BSQConstrainQ.cxx \
+		  BSQConstrainSQ.cxx \
+		  BSQConstrainSQC.cxx \
+		  BSQConstrainSQCb.cxx \
+		  BSQConstrainBSQ.cxx \
+		  BSQConstrainQQ.cxx \
+		  BSQConstrainSQEN.cxx \
+		  BSQConstrainSEN.cxx \
+		  BSQConstrainSQST3.cxx \
+		  BSQConstrainSST3.cxx \
+		  BSQConstrainSQPercolation.cxx \
+		  BSQConstrainSPercolation.cxx \
+		  BQConstrainEN.cxx \
+          BQConstrainQEN.cxx \
+          BQConstrainST3.cxx \
+          BQConstrainBDens.cxx \
+          BQConstrainQST3.cxx \
+          BQConstrainQBDens.cxx \
+          BQConstrainQNetBDens.cxx \
+		  BQConstrainQPercolation.cxx \
+		  BSQConstrainSBDens.cxx \
+		  BSQConstrainSQBDens.cxx \
+		  BSQConstrainSQNetBDens.cxx \
+		  BQfuncEN.cxx \
+		  BQfuncQEN.cxx \
+		  BQfuncST3.cxx \
+		  BQfuncBDens.cxx \
+		  BQfuncQST3.cxx \
+		  BQfuncQBDens.cxx \
+		  BQfuncQNetBDens.cxx \
+		  BQfuncQ.cxx \
+		  BQfuncQPercolation.cxx \
+	      BSQfuncS.cxx \
+	      BSQfuncQ.cxx \
+		  BSQfuncSQ.cxx \
+		  BSQfuncSQC.cxx \
+		  BSQfuncSQCb.cxx \
+		  BSQfuncBSQ.cxx \
+		  BSQfuncQQ.cxx \
+		  BSQfuncSQEN.cxx \
+		  BSQfuncSEN.cxx \
+		  BSQfuncSQST3.cxx \
+		  BSQfuncSST3.cxx \
+		  BSQfuncSBDens.cxx \
+		  BSQfuncSQBDens.cxx \
+		  BSQfuncSQNetBDens.cxx \
+		  BSQfuncSQPercolation.cxx \
+		  BSQfuncSPercolation.cxx \
+		  fit_function.cxx \
+		  Minuit_function.cxx \
+		  Functions.cxx \
+		  BSQCanonicalFncs.cxx \
+		  IntegrationRoutines.cxx \
+		  IntegrationRoutines2D.cxx \
+		  Int_2_String.cxx \
+		  FindExclVolPressure.cxx \
+		  ExclVolPressureFunc.cxx \
+          broyden.cxx \
+          broydens.cxx \
+          brent.cxx
+
+FNCSSO		= $(THERMUS)/lib/libFunctions.$(DllSuf)
+
+OBJS          	= $(FNCSO) 
+PROGRAMS      	= $(FNCSSO)
 
 #------------------------------------------------------------------------------
 
 .SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
-.PHONY:   Classes Thermal
+.PHONY:   Functions
 
 all:            $(PROGRAMS)
-		@echo "Copying dictionary $@..."
-		@cp -a -f *.pcm $(THERMUS)/lib
 
 clean:
 		@rm -f $(OBJS) core
@@ -132,26 +203,17 @@ distclean:      clean
 		@rm -f $(PROGRAMS) *Dict.* *.def *.exp \
 		   *.root *.ps *.so .def so_locations
 		@rm -rf cxx_repository
-		@rm -f $(THERMUS)/lib/*.pcm
 
 ###
 
-Thermal:	$(THERMALSO)	
+Functions:	$(FNCSSO)	
 
-$(THERMALSO):	$(SEP_CLASSESO) $(CLASSDICTO) 
+$(FNCSSO):	$(FNCSO)
 	$(LD) $(SOFLAGS) $(LIBS) $(LDFLAGS) $^ $(OutPutOpt) $@
 
-Classes:	$(SEP_CLASSESO) $(CLASSDICTO)
 
-$(SEP_CLASSESO): 	$(SEP_CLASSESS) $(SEP_CLASSESH) 
-	$(CXX) $(CXXFLAGS) -c $(SEP_CLASSESS) 
-
-$(CLASSDICTO): $(CLASSDICTS)
-	$(CXX) $(CXXFLAGS) -c $(CLASSDICTS) 
-
-$(CLASSDICTS): $(SEP_CLASSESH) $(THERMUS)/main/THERMUSClassesLinkDef.h
-	@echo "Generating dictionary $@..."
-	@rootcling -f $@ -c $^
+$(FNCSO): 	$(FNCSS) $(SEP_CLASSESH) 
+	$(CXX) $(CXXFLAGS) -c $(FNCSS) 
 
 .$(SrcSuf).$(ObjSuf):
 	$(CXX) $(CXXFLAGS) -c $<

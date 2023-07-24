@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.21 FATAL_ERROR)
-project (Thermus)
+project (Thermus VERSION 4.0 DESCRIPTION "Thermus v4.0")
 # checked on 14/09/2021 with root-v6-24-06 (B.H.)
 
 # Find GSL
@@ -31,7 +31,11 @@ set(CMAKE_SHARED_LIBRARY_SUFFIX .so)
 endif (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
 
 if(${CMAKE_SYSTEM} MATCHES Darwin)
-  set (CMAKE_SHARED_LINKER_FLAGS "-single_module -undefined dynamic_lookup -lm")
+# building a dynamic library containing only one module: single_module
+# specifying dynamic lookup for undefined symbols as private definitions:
+#
+set (CMAKE_SHARED_LINKER_FLAGS "-single_module -undefined dynamic_lookup -lm")
+#set (CMAKE_SHARED_LINKER_FLAGS "-single_module -undefined dynamic_lookup --verbose -lm")
 endif(${CMAKE_SYSTEM} MATCHES Darwin)
 
 message(STATUS "Customised the linking flags depending on the platform: ${CMAKE_SHARED_LINKER_FLAGS}")
@@ -51,5 +55,5 @@ message(STATUS "CMake platform: ${CMAKE_SYSTEM}")
 message(STATUS "Build folder: ${Thermus_BINARY_DIR}")
 message(STATUS "Shared Object Library folder: ${Thermus_BINARY_DIR}/lib")
 
-add_subdirectory(functions)
+#add_subdirectory(functions)
 add_subdirectory(main)
