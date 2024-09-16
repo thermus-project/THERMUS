@@ -1,9 +1,16 @@
 #!/bin/bash
 
 export THERMUS=`pwd`
+
+# Doing this here, as then the directory will exists even
+# when build fails
+rm -rf install
+mkdir install
+
 ./cmakethermus.sh
 rm -rf brut_result.txt result.txt
 
+cd install
 root -b -q test/prediction.C > brut_result.txt
 
 sed -n '/predicted values/,$p' brut_result.txt > result.txt
