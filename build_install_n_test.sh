@@ -7,7 +7,7 @@ export THERMUS=`pwd`
 rm -rf install
 mkdir install
 
-./cmakethermus.sh
+./cmake_n_install_thermus.sh
 rm -rf brut_result.txt result.txt
 
 cd install
