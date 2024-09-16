@@ -76,8 +76,8 @@
     printf(" *** Info: Root setup: \t THERMUS is included \t ***\n");
     gSystem->AddIncludePath("-I$THERMUS/particles  \
                               -I$THERMUS/main");
-    gSystem->Load("$THERMUS/build/lib/libFunctions.so");
-    gSystem->Load("$THERMUS/build/lib/libTHERMUS.so");
+    gSystem->Load("$THERMUS/build/functions/libFunctions.so");
+    gSystem->Load("$THERMUS/build/main/libTHERMUS.so");
     
    }
   if(!SwitchThermus && ((!sProgName.CompareTo("root.exe"))||(!sProgName.CompareTo("root"))) ){
