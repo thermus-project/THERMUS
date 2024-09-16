@@ -2,6 +2,8 @@
 
 export THERMUS=`pwd`
 ./cmakethermus.sh
+rm -rf brut_result.txt result.txt
+
 root -b -q test/prediction.C > brut_result.txt
 
 sed -n '/predicted values/,$p' brut_result.txt > result.txt
