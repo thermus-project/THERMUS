@@ -16,5 +16,9 @@ rm -rf build
 mkdir build
 cd build
 #cmake -Wdev -debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
-cmake -Wdev --debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
-cmake --install . --prefix $BASEDIR/install
+cmake -Wdev --debug-output -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=$BASEDIR/install ..
+cmake --build . --parallel $nproc
+cmake --install .
+
+# FIXME: temporary for check
+ls -lR $BASEDIR/install
