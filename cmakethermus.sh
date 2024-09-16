@@ -15,6 +15,5 @@ cd $THERMUS
 rm -rf build
 mkdir build
 cd build
-#cmake -Wdev -debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
 cmake -Wdev --debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
 cmake --build . --parallel $nproc
