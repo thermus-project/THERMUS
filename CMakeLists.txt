@@ -20,6 +20,9 @@ if ( NOT ROOT_FOUND )
 message(FATAL_ERROR "ROOT is required but missing !")
 endif ( NOT ROOT_FOUND )
 
+#GNU like structure
+include(GNUInstallDirs)
+
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
 
@@ -60,3 +63,6 @@ message(STATUS "Shared Object Library folder: ${Thermus_BINARY_DIR}/lib")
 add_subdirectory(functions)
 add_subdirectory(main)
 add_subdirectory(test)
+
+# FIXME: rootlogin.C is not how we want to call it, but ok for now
+install(FILES rootlogon_dist.C DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests RENAME rootlogon.C)
