@@ -8,6 +8,12 @@ if ( NOT GSL_FOUND )
 message(FATAL_ERROR "GSL is required but missing !")
 endif ( NOT GSL_FOUND )
 
+# Find xxHash FIXME
+#FIND_PACKAGE( xxHash REQUIRED )
+#if ( NOT xxHash_FOUND )
+#message(FATAL_ERROR "xxHash is required but missing !")
+#endif ( NOT xxHash_FOUND )
+
 # Check ROOT and Mathmore
 FIND_PACKAGE( ROOT REQUIRED COMPONENTS MathMore )
 if ( NOT ROOT_FOUND )
@@ -53,3 +59,4 @@ message(STATUS "Shared Object Library folder: ${Thermus_BINARY_DIR}/lib")
 
 add_subdirectory(functions)
 add_subdirectory(main)
+add_subdirectory(test)
