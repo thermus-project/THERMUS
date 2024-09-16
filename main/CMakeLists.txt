@@ -16,5 +16,5 @@ add_library(THERMUS SHARED ${SRCFILES} ThermusDict.cxx)
 set_target_properties(THERMUS PROPERTIES PUBLIC_HEADER "${HFILES}")
 target_link_libraries(THERMUS ${ROOT_LIBRARIES} GSL::gsl GSL::gslcblas)
 
-#install(TARGETS THERMUS)
+install(TARGETS THERMUS)
 #install(TARGETS )
