@@ -8,14 +8,13 @@ rm -rf install
 mkdir install
 
 ./cmake_n_install_thermus.sh
-rm -rf brut_result.txt result.txt
 
-cd install
-root -b -q test/prediction.C > brut_result.txt
+cd install/share/doc/Thermus/tests/
+root -b -q prediction.C > brut_result.txt
 
 sed -n '/predicted values/,$p' brut_result.txt > result.txt
 
-diff result.txt test/prediction_expected.txt
+diff result.txt prediction_expected.txt
 
 if [ $? -ne 0 ]; then
   echo "TEST FAILED"
