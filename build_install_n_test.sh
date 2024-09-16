@@ -9,6 +9,8 @@ mkdir install
 
 ./cmake_n_install_thermus.sh
 
+export THERMUS=`pwd`/install
+
 cd install/share/doc/Thermus/tests/
 root -b -q prediction.C > brut_result.txt
 

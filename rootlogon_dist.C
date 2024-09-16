@@ -71,9 +71,10 @@
   // Switch on THERMUS:
   int SwitchThermus = 1;
 
+
   // Start of Config aliroot
   if(SwitchThermus && ((!sProgName.CompareTo("root.exe"))||(!sProgName.CompareTo("root"))) ){
-    printf(" *** Info: Root setup: \t THERMUS is included \t ***\n");
+    printf(" *** Info: Root setup: \t THERMUS is included ( %s )\t ***\n",gEnv->GetValue("THERMUS","/usr"));
     gSystem->AddIncludePath("-I$THERMUS/includes/thermus");
     gSystem->Load("$THERMUS/lib64/libFunctions.so");
     gSystem->Load("$THERMUS/lib64/libTHERMUS.so");
