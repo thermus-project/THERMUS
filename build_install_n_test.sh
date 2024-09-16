@@ -2,11 +2,6 @@
 
 export THERMUS=`pwd`
 
-# Doing this here, as then the directory will exists even
-# when build fails
-rm -rf install
-mkdir install
-
 ./cmake_n_install_thermus.sh
 
 export THERMUS=`pwd`/install

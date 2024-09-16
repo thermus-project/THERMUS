@@ -12,7 +12,7 @@ fi
 
 #
 cd $THERMUS
-rm -rf build
+rm -rf build install
 mkdir build
 cd build
 #cmake -Wdev -debug-output -DCMAKE_VERBOSE_MAKEFILE=ON ..
