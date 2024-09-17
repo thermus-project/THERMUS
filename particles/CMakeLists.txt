@@ -1,0 +1,5 @@
+# CMakeLists.txt in test
+FILE(GLOB PRTCLS *.txt)
+
+install(FILES ${PRTCLS}  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/particles)
+
