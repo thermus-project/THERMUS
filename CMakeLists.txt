@@ -63,6 +63,7 @@ message(STATUS "Shared Object Library folder: ${Thermus_BINARY_DIR}/lib")
 add_subdirectory(functions)
 add_subdirectory(main)
 add_subdirectory(test)
+add_subdirectory(particles)
 
 # FIXME: rootlogin.C is not how we want to call it, but ok for now
 install(FILES rootlogon_dist.C DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests RENAME rootlogon.C)
