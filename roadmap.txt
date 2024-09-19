@@ -2,4 +2,11 @@
 - simplify rootlogon
 - add tex doc
 - Fix xxHash test
+- code beautifying
+- Library path unders Thermus
+- Rename rootlogons
+- Unify rootlogons
+
+
+Done:
 - Fix rdict.pcm install
