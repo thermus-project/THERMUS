@@ -58,7 +58,7 @@ message(STATUS "Source folder: ${Thermus_SOURCE_DIR}")
 message(STATUS "               which should correspond to $THERMUS ")
 message(STATUS "CMake platform: ${CMAKE_SYSTEM}")
 message(STATUS "Build folder: ${Thermus_BINARY_DIR}")
-message(STATUS "Shared Object Library folder: ${Thermus_BINARY_DIR}/lib")
+#message(STATUS "Shared Object Library folder: ${Thermus_BINARY_DIR}/lib")
 
 add_subdirectory(functions)
 add_subdirectory(main)
