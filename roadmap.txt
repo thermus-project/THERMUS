@@ -1,0 +1,5 @@
+- Fix particle install
+- simplify rootlogon
+- add tex doc
+- Fix xxHash test
+- Fix rdict.pcm install
