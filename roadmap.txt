@@ -6,7 +6,7 @@
 - Library path unders Thermus
 - Rename rootlogons
 - Unify rootlogons
-
+- TXT files optimisation
 
 Done:
 - Fix rdict.pcm install

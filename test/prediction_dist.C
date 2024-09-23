@@ -24,9 +24,9 @@ void prediction(){
   // **************************************************
   // First, definition the particle list
   // and their properties (and decays):
-  TTMParticleSet set(THERMUS+"/share/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
+  TTMParticleSet set(THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
 
-  set.InputDecays(THERMUS+"/share/particles");  // here true means the decays are scaled to sum(BR) = 100%
+  set.InputDecays(THERMUS+"/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
   // **************************************************
   // Second, choice of formalism:
   // - We want here a Grand Canonical Treatment so we use
