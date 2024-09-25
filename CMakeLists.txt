@@ -26,13 +26,6 @@ include(GNUInstallDirs)
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
 
-#SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-#SET (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-#SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-#SET (CMAKE_INSTALL_BINDIR ${CMAKE_BINARY_DIR}/bin)
-#SET (CMAKE_INSTALL_LIBDIR ${CMAKE_BINARY_DIR}/lib)
-
 include_directories("include" "main" ${ROOT_INCLUDE_DIRS} ${GSL_INCLUDE_DIRS})
 
 if (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
@@ -65,5 +58,5 @@ add_subdirectory(main)
 add_subdirectory(test)
 add_subdirectory(particles)
 
-# FIXME: rootlogin.C is not how we want to call it, but ok for now
+# FIXME: rootlogon.C is not how we want to call it, but ok for now
 install(FILES rootlogon_dist.C DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests RENAME rootlogon.C)
