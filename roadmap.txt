@@ -1,12 +1,19 @@
-- Fix particle install
-- simplify rootlogon
+Needed for 4.0:
+- Unify rootlogons
 - add tex doc
-- Fix xxHash test
+- Compilation doc
 - code beautifying
 - Library path unders Thermus
-- Rename rootlogons
-- Unify rootlogons
-- TXT files optimisation
+- Better test for TXT
+- Stamped TXT set
+
+Later:
+- Fix xxHash test
+- TXT files optimisation (Maybe? Not now)
+- Local TXT files?
+- Automatic PDG upgrade?
 
 Done:
 - Fix rdict.pcm install
+- Fix particle install
+- simplify rootlogon
