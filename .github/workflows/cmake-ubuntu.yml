@@ -1,0 +1,45 @@
+# This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: CMake on Ubuntu
+
+on:
+  push:
+    branches: [ "dev4_" ]
+  pull_request:
+    branches: [ "dev4" ]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install LaTeX
+      run: sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-publishers texlive-plain-generic biber ghostscript poppler-utils
+    - name: Install root dependencies
+      run: sudo apt install -y nlohmann-json3-dev liburing-dev
+    - name: Download root
+      run: wget https://cern.ch/amadio/root/root_6.26.10_ubuntu22_amd64.deb
+    - name: Install root
+      run: sudo apt install -y ./root_6.26.10_ubuntu22_amd64.deb
+    
+    - uses: actions/checkout@v4
+
+    - name: Inplace build
+      run: ${{github.workspace}}/scripts/inplace_build.sh
+
+    - name: Inplace test
+      run: ${{github.workspace}}/local/share/doc/Thermus/tests/inplace_test.sh ${{github.workspace}}/run_thermus 
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      # Execute tests defined by the CMake configuration.
+      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+      run: ctest -C ${{env.BUILD_TYPE}}
+
