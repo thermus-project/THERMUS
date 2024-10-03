@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# All arguments are passed to run_thermus.C
+ARGUMENTS="$@"
+
+# Location of THERMUS install directory
+# Set at build time
+export THERMUS=@THERMUS@
+export THERMUS_LIB=$THERMUS/@THERMUS_LIB@
+root $THERMUS/share/Thermus/root/use_thermus.C $ARGUMENTS
+
