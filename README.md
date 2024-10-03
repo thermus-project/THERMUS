@@ -1,11 +1,25 @@
 # THERMUS
-A Thermal Model Package for ROOT
+A Thermal Model Package for ROOT v4
 
 Contacts
 ========
 
 Thermus.Project@cern.ch
 Thermus.Support@cern.ch
+
+TL-DR
+=====
+
+## Inplace install and run
+- Ensure ROOT (https://root.cern.ch) is installed and configured in your current shell.
+- Build and configure for local run:
+    ```bash
+    ./scripts/inplace_build.sh
+    ```
+- Starts a root session with Thermus libs:
+    ```bash
+    ./run_thermus
+    ```
 
 Contents
 ========

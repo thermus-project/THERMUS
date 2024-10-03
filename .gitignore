@@ -1,5 +1,7 @@
 build
+local
+install
+run_thermus
 brut_result.txt
 result.txt
-install
 
