@@ -1,5 +1,5 @@
 # CMakeLists.txt in test
 
-install(FILES prediction.txt prediction_expected.txt DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests)
-install(FILES prediction_dist.C DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests RENAME prediction.C)
+install(FILES prediction.C prediction.txt prediction_expected.txt DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests)
+install(PROGRAMS inplace_test.sh DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests)
 
