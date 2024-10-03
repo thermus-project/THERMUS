@@ -1,6 +1,5 @@
 cmake_minimum_required (VERSION 3.21 FATAL_ERROR)
-project (Thermus)
-# checked on 20/07/2021 with root-v6-24-02 (B.H.)
+project (Thermus VERSION 4.0.0)
 
 # Find GSL
 FIND_PACKAGE( GSL REQUIRED )
@@ -8,7 +7,7 @@ if ( NOT GSL_FOUND )
 message(FATAL_ERROR "GSL is required but missing !")
 endif ( NOT GSL_FOUND )
 
-# Find xxHash FIXME
+# Find xxHash FIXME and liburing2
 #FIND_PACKAGE( xxHash REQUIRED )
 #if ( NOT xxHash_FOUND )
 #message(FATAL_ERROR "xxHash is required but missing !")
@@ -22,6 +21,8 @@ endif ( NOT ROOT_FOUND )
 
 #GNU like structure
 include(GNUInstallDirs)
+# Put libs under Thermus in libdir
+set(CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR}/Thermus)
 
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
@@ -55,8 +56,15 @@ message(STATUS "Build folder: ${Thermus_BINARY_DIR}")
 
 add_subdirectory(functions)
 add_subdirectory(main)
-add_subdirectory(test)
 add_subdirectory(particles)
+# Don't include do if WITHOUT_TEX_DOC is set
+if(NOT WITHOUT_TEX_DOC)
+  add_subdirectory(doc)
+endif()
+add_subdirectory(scripts)
+add_subdirectory(test)
 
-# FIXME: rootlogon.C is not how we want to call it, but ok for now
-install(FILES rootlogon_dist.C DESTINATION ${CMAKE_INSTALL_DOCDIR}/tests RENAME rootlogon.C)
+# Also publish the README file
+set(README_FILE ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
+
+install(FILES ${README_FILE} DESTINATION ${CMAKE_INSTALL_DOCDIR})
