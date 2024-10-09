@@ -7,11 +7,11 @@
 %% The `elsart' style that is used and more information on this style
 %% can be found at the Author Gateway (http://authors.elsevier.com) and follow %% the link to "Guide to publishing with Elsevier".
 \documentclass{elsarticle}
-\usepackage{epsfig}
-\usepackage{pst-node}
-\usepackage{pst-plot}
-\usepackage{changebar}
-\usepackage{setspace}
+%\usepackage{epsfig}
+%\usepackage{pst-node}
+%\usepackage{pst-plot}
+%\usepackage{changebar}
+%usepackage{setspace}
 \usepackage{color}
 %
 \usepackage[colorlinks=true,urlcolor=black]{hyperref}
@@ -485,7 +485,8 @@ treatment of resonances is essential in any statistical-thermal analysis.\\
  
 \begin{figure}
 \begin{center}
-\includegraphics[width=12cm]{fig1_EnergyDepPiDecay_Thermus_v4.eps}
+  %%488x508
+\includegraphics[width=12cm]{figures/fig1_EnergyDepPiDecay_Thermus_v4.pdf}
 \end{center}
 \caption{The energy dependence of the decay contribution to the final $\pi^+$ yield as predicted by the 
 statistical-thermal model. Calculations performed within the grand-canonical formalism, 
@@ -646,7 +647,8 @@ classnames begin with a `T'. THERMUS classnames begin with `TTM' for easy identi
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=12cm]{fig2_Thermus_Structure_v4.eps}
+  %%567x385
+\includegraphics[width=12cm]{figures/fig2_Thermus_Structure_v4.pdf}
 \caption{The basic structure of THERMUS (only the most fundamental base classes are shown).}\label{FlowChart}
 \end{center}
 \end{figure}
@@ -879,7 +881,8 @@ the hadrons composed of $b$ and $t$ quarks.\\
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=12cm]{fig3_ResonanceMassDistribution_comp_Thermus_v4.eps}
+  %% 567x385
+\includegraphics[width=12cm]{figures/fig3_ResonanceMassDistribution_comp_Thermus_v4.pdf}
 \caption{The mass distribution 
 of the resonances included in \texttt{PartList\_PPB2002.txt}.}\label{ResDistr}
 \end{center}
@@ -2069,6 +2072,7 @@ root [ ] gSystem->Load("./lib/libTHERMUS.so");
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
 \bibliography{thermus_biblio_v4}
 
 \end{document}
