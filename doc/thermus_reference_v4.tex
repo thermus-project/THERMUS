@@ -118,7 +118,7 @@ relativistic heavy-ion collisions												\\
   %Classify using CPC Program Library Subject Index, see (
   % http://cpc.cs.qub.ac.uk/subjectIndex/SUBJECT_index.html)
   %e.g. 4.4 Feynman diagrams, 5 Computer Algebra.
-\textcolor{red}{{\em External routines/libraries:} `GNU Scientific Library'~\cite{galassi:2009gsl}, ROOT~\cite{Brun:1997pa}}	\\
+\textcolor{red}{{\em External routines/libraries:} `GNU Scientific Library'~\cite{Galassi:2009gsl}, ROOT~\cite{Brun:1997pa}}	\\
   % Fill in if necessary, otherwise leave out.
 
 {\em Nature of problem:}\\
@@ -156,7 +156,7 @@ experimental observables (i.e. particle yields following resonance decay). Addit
 factors allow fine-tuning of the model predictions to a specific detector arrangement.\\
 
 When parameters are required to be constrained, use is made of the 
-\textcolor{red}{`GNU Scientific Library'~\cite{galassi:2009gsl}} functions which applies the Broyden globally
+\textcolor{red}{`GNU Scientific Library'~\cite{Galassi:2009gsl}} functions which applies the Broyden globally
 convergent secant method of solving nonlinear systems of equations. THERMUS provides the means 
 of imposing a large number of constraints on the chosen model (amongst others, THERMUS can fix the 
 baryon-to-charge ratio of the system, the strangeness density of the system and the primordial energy 
@@ -1600,7 +1600,7 @@ This is because, unlike the $\Delta(1600)^0$, the $\pi^+$ was considered stable.
 
 \subsubsection{Imposing of Constraints}
 
-The `Numerical Recipes in C'~\cite{press:2007nrc} function applying the Broyden globally
+The `Numerical Recipes in C'~\cite{Press:2007nrc} function applying the Broyden globally
 convergent secant method of solving nonlinear systems of equations is
 employed by THERMUS to constrain parameters. The input to the Broyden 
 method is a vector of functions for which roots are sought. Typically, 
@@ -2024,13 +2024,13 @@ Having introduced the basic functionality of THERMUS in the previous section,
 we conclude by outlining the installation procedure.\\
 
 Since several functions in THERMUS use `Numerical Recipes 
-in C' code \cite{press:2007nrc} (which is under copyright), it is required that THERMUS users have their own copies 
+in C' code \cite{Press:2007nrc} (which is under copyright), it is required that THERMUS users have their own copies 
 of this software. Then, with ROOT \cite{Brun:1997pa} already installed, the following steps are
 to be followed to install THERMUS:
 \begin{itemize}
 \item{Download the THERMUS source;}
 \item{Set an environment variable `THERMUS' to point at the top-level directory containing the THERMUS code;}
-\item{Copy the following `Numerical Recipes in C' \cite{press:2007nrc} functions to \texttt{\$(THERMUS)/nrc}:
+\item{Copy the following `Numerical Recipes in C' \cite{Press:2007nrc} functions to \texttt{\$(THERMUS)/nrc}:
 \texttt{
 \begin{tabular}{ll}
 broydn.c & rsolv.c\\
