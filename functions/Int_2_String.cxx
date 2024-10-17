@@ -22,7 +22,7 @@
 TString Int_2_String(Int_t x)
 {
 char name[20];
-sprintf(name,"%010d",x);
+snprintf(name,sizeof(name),"%010d",x);
 TString string(name);
 return string;
 }
