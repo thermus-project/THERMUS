@@ -34,7 +34,7 @@ set(CMAKE_SHARED_LIBRARY_SUFFIX .so)
 endif (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
 
 if(${CMAKE_SYSTEM} MATCHES Darwin)
-  set (CMAKE_SHARED_LINKER_FLAGS "-single_module -undefined dynamic_lookup -lm")
+  set (CMAKE_SHARED_LINKER_FLAGS "-undefined dynamic_lookup -lm")
 endif(${CMAKE_SYSTEM} MATCHES Darwin)
 
 message(STATUS "Customised the linking flags depending on the platform: ${CMAKE_SHARED_LINKER_FLAGS}")
