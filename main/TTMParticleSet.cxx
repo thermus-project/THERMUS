@@ -684,6 +684,8 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
   // GenerateBRatios() updates the summaries first.
   // 
 
+  if (parent->GetDecayChainProcessed()) return;    // V.Vovchenko (integrating decay chain for unstable particles)
+
   TList* parent_decays = parent->GetDecaySummary();
 
   if (!parent->GetStable())    //Parent unstable
@@ -703,7 +705,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
         while ((p_decay = (TTMDecay*) p_next())) {
           TTMParticle* daughter = GetParticle(p_decay->GetDaughterID());
           if(daughter){			//if daughter is in the set
-            if (daughter->GetStable())	//if daughter is stable
+            //if (daughter->GetStable())	    // V.Vovchenko (integrating decay chain for unstable particles)
               {
                 TIter t_next(temp_decays);
                 TTMDecay* t_decay;
@@ -724,8 +726,10 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
                                                    p_decay->GetDaughterID(),p_decay->GetBRatio());
                     temp_decays->AddLast(decay);
                   }
-              } else              // if daughter is unstable
+              } //else                  // V.Vovchenko (integrating decay chain for unstable particles)
+              if (!daughter->GetStable())     // V.Vovchenko (integrating decay chain for unstable particles)
                 {
+                  if (!daughter->GetDecayChainProcessed()) GenerateBRatios(daughter);      // V.Vovchenko (integrating decay chain for unstable particles)
                   TList* daughter_decays = daughter->GetDecaySummary();
                   TIter d_next(daughter_decays);
                   TTMDecay* d_decay;
@@ -734,8 +738,8 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
                     TTMParticle* grandaughter = GetParticle
                       (d_decay->GetDaughterID());
 
-                    if (grandaughter->GetStable()) 
-                      //if grandaughter is stable
+                    //if (grandaughter->GetStable())      // V.Vovchenko (integrating decay chain for unstable particles)
+                      //if grandaughter is stable      // V.Vovchenko (integrating decay chain for unstable particles)
                       {
                         TIter t_next(temp_decays);
                         TTMDecay* t_decay;
@@ -762,13 +766,14 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
                                            d_decay->GetBRatio());
                             temp_decays->AddLast(decay);
                           }
-                      } else
-                        //if grandaughter is unstable
-                        {
+                      }     // V.Vovchenko (integrating decay chain for unstable particles)
+                      // else
+                      //   //if grandaughter is unstable
+                      //   {
 
-                          GenerateBRatios(daughter);
-                          flag = 1;  //once exited we try again
-                        }
+                      //     GenerateBRatios(daughter);
+                      //     flag = 1;  //once exited we try again
+                      //   }
                     if (flag == 1) {
                       break;
                     }
@@ -787,6 +792,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
       } while (flag == 1); 
       parent->SetDecaySummary(temp_decays);
     }
+    parent->SetDecayChainProcessed(true);      // V.Vovchenko (integrating decay chain for unstable particles)
 }
 
 //__________________________________________________________________________

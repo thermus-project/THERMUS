@@ -67,6 +67,7 @@ TTMParticle::TTMParticle(const TTMParticle &obj)
   fRadius = obj.GetRadius();
   fThresholdCalc = obj.GetThresholdCalc();
   fThresholdFlag = obj.GetThresholdFlag();
+  fBContent = obj.GetBContent();
   fSContent = obj.GetSContent();
   fCContent = obj.GetCContent();
   fbContent = obj.GetbContent();
@@ -441,6 +442,7 @@ TTMParticle& TTMParticle::operator=(const TTMParticle& obj)
   fRadius = obj.GetRadius();
   fThresholdCalc = obj.GetThresholdCalc();
   fThresholdFlag = obj.GetThresholdFlag();
+  fBContent = obj.GetBContent();
   fSContent = obj.GetSContent();
   fCContent = obj.GetCContent();
   fbContent = obj.GetbContent();
