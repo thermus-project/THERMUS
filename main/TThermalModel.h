@@ -91,7 +91,7 @@ class TTMThermalModel:public TObject {
    {
       fDensTable = new THashTable();
       fDensTable->SetOwner(kTRUE);
-      fModel = 0;
+      fModel = 1;
    }  
    
    ~TTMThermalModel();

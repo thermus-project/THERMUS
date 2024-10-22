@@ -12,7 +12,7 @@ $RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/prediction.C -b -q' > brut_result
 
 sed -n '/predicted values/,$p' brut_result.txt > result.txt
 
-diff result.txt $TESTDIR/prediction_expected.txt
+diff result.txt $TESTDIR/prediction_expected_model_1.txt
 
 if [ $? -ne 0 ]; then
   echo "TEST FAILED"

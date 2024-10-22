@@ -35,7 +35,7 @@ TTMParticleSet::TTMParticleSet()
   fPartTable = new THashTable();
   fFilename = TString("");
   fParticleNumber = 0;
-  fModel=0;
+  fModel=1;
 }
 
 //__________________________________________________________________________
