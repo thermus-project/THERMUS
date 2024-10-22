@@ -4,9 +4,9 @@ name: Ubuntu no Tex doc full test
 
 on:
   push:
-    branches: [ "dev4" ]
+    branches: [ "dev4ywork3" ]
   pull_request:
-    branches: [ "dev4" ]
+    branches: [ "dev4ywork3" ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
