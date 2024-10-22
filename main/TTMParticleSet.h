@@ -39,7 +39,7 @@
 class TTMParticleSet:public TObject {
 
  private:
-  Int_t fModel;                 // Computing model used. For now: 0: old one, 1: new one
+  Int_t fModely;                 // Computing model used. For now: 0: old one, 1: new one
   THashTable* fPartTable;       // hash table of TTMParticle objects
   TString fFilename;            // Input file
   Int_t fParticleNumber;        // No. of particles in the set
@@ -50,9 +50,9 @@ class TTMParticleSet:public TObject {
  public:
 
   TTMParticleSet();
-  TTMParticleSet(const char *file, Bool_t CB = true, const Int_t model=1); // BH 26/04/2014
-  TTMParticleSet(TDatabasePDG *pdg, const Int_t model=1);
-  TTMParticleSet(const TTMParticleSet &obj, const Int_t model=1);
+  TTMParticleSet(const char *file, Bool_t CB = true, const Int_t modely=1); // BH 26/04/2014
+  TTMParticleSet(TDatabasePDG *pdg, const Int_t modely=1);
+  TTMParticleSet(const TTMParticleSet &obj, const Int_t modely=1);
   ~TTMParticleSet();
    
   THashTable* GetParticleTable() const {return fPartTable;} 
