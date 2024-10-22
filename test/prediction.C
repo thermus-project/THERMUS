@@ -18,14 +18,14 @@
 // Always better to start with a verbose mode
 Bool_t debugMode=1; // verbose with debugMode=1
 
-void prediction(){
+void prediction(TString filename=THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt") {
 
   Bool_t constrainMuQ = 1, quantRes = 1;
   // **************************************************
   // First, definition the particle list
   // and their properties (and decays):
-  TTMParticleSet set(THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
-
+  TTMParticleSet set(filename,true);
+  
   set.InputDecays(THERMUS+"/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
   // **************************************************
   // Second, choice of formalism:
