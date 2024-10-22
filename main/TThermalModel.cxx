@@ -59,7 +59,7 @@ void TTMThermalModel::GenerateDecayPartDens()
     TTMDensObj *daughter_dens = GetDensities(d->GetID());
     daughter_dens->SetDecayDensity(0.);
 
-    if ((fModel > 0) || d->GetStable())       // V.Vovchenko (integrating decay chain for unstable particles)
+    if ((fModely > 0) || d->GetStable())       // V.Vovchenko (integrating decay chain for unstable particles)
       {
         Double_t decay = 0.;
         TIter next_p(part_table);
@@ -92,7 +92,7 @@ void TTMThermalModel::GenerateDecayPartDens(Int_t id)
   TTMDensObj *daughter_dens = GetDensities(id);
   daughter_dens->SetDecayDensity(0.);
 
-  if ((fModel > 0) || d->GetStable())       // V.Vovchenko (integrating decay chain for unstable particles)
+  if ((fModely > 0) || d->GetStable())       // V.Vovchenko (integrating decay chain for unstable particles)
     {
       Double_t decay = 0.;
       TIter next_p(part_table);
