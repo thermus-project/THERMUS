@@ -9,7 +9,7 @@
 - Stamped TXT set
 - Merging Boris changes
 - Merging Natasha changes
-- Having MacOS tests to work.
+- Checksum the distributed particle set
 
 ### Maybe
 - THERMUS and THERMUS_LIB
@@ -23,12 +23,14 @@ For now, kept as it is.
 ### Already done:
 - Fix rdict.pcm install
 - Fix particle install
-- simplify rootlogon
-- Adding macOS in autotest
-- Autotest in git
-- add tex doc
+- LaTeX doc working (on Linux)
+- removed rootlogon (replaced by use_thermus.C)
+- Run on MacOS (without LaTeX doc generation)
+- Autotests by githlab workflow
 - Library path unders Thermus
-- Unify and rename rootlogons
+- Scripts in their own subdir
+- Removed support for Makefile build
+
 
 ## Before next upstream push
 ### Already done
