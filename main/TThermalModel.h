@@ -47,6 +47,7 @@ class TTMThermalModel:public TObject {
 
  protected:
 
+   Int_t fModel;		// model number, for now: 0=old, 1=new
    TTMParticleSet *fPartSet;	// pointer to particle set
    Bool_t fWidth;		// True if width is to be taken into account 
    THashTable *fDensTable;	// pointer to density hash table
@@ -90,6 +91,7 @@ class TTMThermalModel:public TObject {
    {
       fDensTable = new THashTable();
       fDensTable->SetOwner(kTRUE);
+      fModel = 0;
    }  
    
    ~TTMThermalModel();
