@@ -14,6 +14,14 @@ rm -f $TESTDIR/results/*.txt
 # So the argument is single-quoted to avoid expansion
 $RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/all_predictions.C -b -q'
 
+# If there are no results files, test failed
+if compgen -G "$TESTDIR/results/*.txt" > /dev/null; then
+    echo "Some results files were found"
+else
+    echo "TEST FAILED: no results files were found"
+    exit 1
+fi
+
 # For each file in the result directory, test if it's same as in the expected directory
 for ff in `ls $TESTDIR/results/*.txt`; do
   f=`basename $ff`
