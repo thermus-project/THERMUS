@@ -1,18 +1,3 @@
-/************************************************************************
- * Copyright(c) 2004-2018, THERMUS Project,        All rights reserved. *
- *                                                                      *
- * Author: The THERMUS Project (A Thermal Model Package for ROOT).      *
- * Contributors (UCT-IPHC) are mentioned in the code where appropriate. *
- *                                                                      *
- * Permission to use, copy, modify and distribute this software and its *
- * documentation strictly for non-commercial purposes is hereby granted *
- * without fee, provided that the above copyright notice appears in all *
- * copies and that both the copyright notice and this permission notice *
- * appear in the supporting documentation. The authors make no claims   *
- * about the suitability of this software for any purpose. It is        *
- * provided "as is" without express or implied warranty.                *
- ************************************************************************/
-
 // Author: Spencer Wheaton 26 April 2010 //
 //__________________________________________________________________________
 // Stores particle properties relevant to the thermal model.
@@ -45,6 +30,7 @@ TTMParticle::TTMParticle()
   fRadius = 0.;
   fDecaySummary = new TList();
   fDecayChannels = new TList();
+  fDecayChainProcessed = false;  //FIX(V. Vovchenko): Added to fix decay contributions
 }
 
 //__________________________________________________________________________
@@ -330,6 +316,8 @@ void TTMParticle::UpdateDecaySummary()
   // Updates the fDecaySummary summary list from the fDecayChannels list by 
   // iterating over these channels. Uses GetDecay().
   //
+
+  fDecayChainProcessed = false; //FIX (V. Vovchenko): Added to fix decay contributions
 
   fDecaySummary->Delete();
   
