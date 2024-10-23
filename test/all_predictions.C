@@ -22,28 +22,28 @@ TString Setlist[1]={
     "PartList_PPB2014_CBHN.txt"
 };
 
-const Int_t ModelList[2] = {0,1};
+const Int_t DecayFix[2] = {false,true};
 
 // Declaration of prediction function
 void prediction(TString filename=THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt",Int_t modely=1);
 
 void all_predictions() {
     // Loop through all models
-    for (Int_t modely=0; modely<2; modely++) {
+    for (Int_t df=0; df<2; df++) {
         // Loop through all sets
         for (Int_t set=0; set<1; set++) {
             TString filename=THERMUS+"/share/Thermus/particles/"+Setlist[set];
-            prediction(filename,modely);
+            prediction(filename,DecayFix[df]);
         }
     }
 }
 
-void prediction(TString filename,Int_t modely) {
+void prediction(TString filename,Bool_t decayfix) {
     Bool_t constrainMuQ=1, quantRes=1;
     // **************************************************
     // First, definition the particle list
     // and their properties (and decays):
-    TTMParticleSet set(filename,true,modely);
+    TTMParticleSet set(filename,true,decayfix);
     set.InputDecays(THERMUS+"/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
     // **************************************************
     // Second, choice of formalism:
@@ -88,12 +88,13 @@ void prediction(TString filename,Int_t modely) {
     // **************************************************
     // Open a text file to store the results, containing modely value in the name
     TString foutName;
-    foutName.Form("test/results/result_%d.txt",modely);
+    Int_t df_i = decayfix?1:0;
+    foutName.Form("test/results/result_%d.txt",df_i);
     // Create directories test/results if they do not exist
     gSystem->Exec("mkdir -p test/results");
     FILE * fout = fopen(foutName,"w");
     if (!fout) {
-        printf("ERROR: cannot open file result_%d.txt\n",modely);
+        printf("ERROR: cannot open file result_%d.txt\n",df_i);
         return;
     }
 
