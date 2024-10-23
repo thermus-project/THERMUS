@@ -39,7 +39,10 @@
 class TTMParticleSet:public TObject {
 
  private:
-  Int_t fModely;                 // Computing model used. For now: 0: old one, 1: new one
+  Bool_t fDecayChainFix;         // V.Vovchenko fixed a decay chain issue
+                                // for Thermus 4.0 and up. This flag
+                                // should be left to True, unless for
+                                // comparison to the old code.
   THashTable* fPartTable;       // hash table of TTMParticle objects
   TString fFilename;            // Input file
   Int_t fParticleNumber;        // No. of particles in the set
@@ -50,9 +53,9 @@ class TTMParticleSet:public TObject {
  public:
 
   TTMParticleSet();
-  TTMParticleSet(const char *file, Bool_t CB = true, const Int_t modely=1); // BH 26/04/2014
-  TTMParticleSet(TDatabasePDG *pdg, const Int_t modely=1);
-  TTMParticleSet(const TTMParticleSet &obj, const Int_t modely=1);
+  TTMParticleSet(const char *file, Bool_t CB = true, const Bool_t decaychainfix = true); // BH 26/04/2014
+  TTMParticleSet(TDatabasePDG *pdg, const Bool_t decaychainfix = true);
+  TTMParticleSet(const TTMParticleSet &obj, const Bool_t decaychainfix = true);
   ~TTMParticleSet();
    
   THashTable* GetParticleTable() const {return fPartTable;} 

@@ -35,13 +35,13 @@ TTMParticleSet::TTMParticleSet()
   fPartTable = new THashTable();
   fFilename = TString("");
   fParticleNumber = 0;
-  fModely=1;
+  fDecayChainFix=true;
 }
 
 //__________________________________________________________________________
-TTMParticleSet::TTMParticleSet(const TTMParticleSet &obj, const Int_t modely)
+TTMParticleSet::TTMParticleSet(const TTMParticleSet &obj, const Bool_t decaychainfix)
 {
-  fModely = modely;
+  fDecayChainFix=decaychainfix;
   fPartTable = new THashTable();
   fParticleNumber = 0;
   TIter next(obj.GetParticleTable());
@@ -103,7 +103,7 @@ TTMParticleSet::TTMParticleSet(const TTMParticleSet &obj, const Int_t modely)
 }
 
 //__________________________________________________________________________
-TTMParticleSet::TTMParticleSet(const char* file, Bool_t CB, const Int_t modely)
+TTMParticleSet::TTMParticleSet(const char* file, Bool_t CB, const Bool_t decaychainfix)
 {
   // Populates the hash table with particles listed in the specified file.
   // This file lists only PARTICLES. If a particle listed in the file has
@@ -126,7 +126,7 @@ TTMParticleSet::TTMParticleSet(const char* file, Bool_t CB, const Int_t modely)
   // If the width is non-zero, the decay products in the channel which 
   // determines the threshold is listed (*).    
   //
-  fModely = modely;
+  fDecayChainFix=decaychainfix;
   fPartTable = new THashTable();
   fFilename = file;
   fParticleNumber = 0;
@@ -265,7 +265,7 @@ TTMParticleSet::TTMParticleSet(const char* file, Bool_t CB, const Int_t modely)
 }
 
 //__________________________________________________________________________
-TTMParticleSet::TTMParticleSet(TDatabasePDG *pdg, const Int_t modely)
+TTMParticleSet::TTMParticleSet(TDatabasePDG *pdg, const Bool_t decaychainfix)
 {
   // Instantiates a TTMParticleSet object and populates the set with 
   // particles listed in the TDatabasePDG object pointed at by pdg.
@@ -278,7 +278,7 @@ TTMParticleSet::TTMParticleSet(TDatabasePDG *pdg, const Int_t modely)
   // not automatically added in this constructor.  
   //
 
-  fModely = modely;
+  fDecayChainFix = decaychainfix;
   fPartTable = new THashTable();
   fFilename = TString("");
   fParticleNumber = 0;
@@ -687,7 +687,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
   // GenerateBRatios() updates the summaries first.
   // 
 
-  if ((fModely>0) && parent->GetDecayChainProcessed()) return;    // V.Vovchenko (integrating decay chain for unstable particles)
+  if ((fDecayChainFix) && parent->GetDecayChainProcessed()) return;    // V.Vovchenko (integrating decay chain for unstable particles)
 
   TList* parent_decays = parent->GetDecaySummary();
 
@@ -708,7 +708,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
         while ((p_decay = (TTMDecay*) p_next())) {
           TTMParticle* daughter = GetParticle(p_decay->GetDaughterID());
           if(daughter){			//if daughter is in the set
-            if ((fModely > 0) || ((fModely == 0) && daughter->GetStable()))	//if daughter is stable
+            if ((fDecayChainFix) || ((not fDecayChainFix) && daughter->GetStable()))	//if daughter is stable
               {
                 TIter t_next(temp_decays);
                 TTMDecay* t_decay;
@@ -740,7 +740,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
                     TTMParticle* grandaughter = GetParticle
                       (d_decay->GetDaughterID());
 
-                    if ((fModely > 0) || ((fModely == 0) &&  grandaughter->GetStable()))      // V.Vovchenko (integrating decay chain for unstable particles)
+                    if ((fDecayChainFix) || ((not fDecayChainFix) &&  grandaughter->GetStable()))      // V.Vovchenko (integrating decay chain for unstable particles)
                       //if grandaughter is stable      // V.Vovchenko (integrating decay chain for unstable particles)
                       {
                         TIter t_next(temp_decays);
@@ -769,7 +769,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
                             temp_decays->AddLast(decay);
                           }
                       }     // V.Vovchenko (integrating decay chain for unstable particles)
-                      if ((fModely == 0) && (!grandaughter->GetStable()))
+                      if ((not fDecayChainFix) && (!grandaughter->GetStable()))
                          //if grandaughter is unstable
                          {
 
@@ -795,7 +795,7 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
       } while (flag == 1); 
       parent->SetDecaySummary(temp_decays);
     }
-    if (fModely > 0)
+    if (fDecayChainFix)
       parent->SetDecayChainProcessed(true);      // V.Vovchenko (integrating decay chain for unstable particles)
 }
 
