@@ -6,6 +6,10 @@ RUN_THERMUS=$1
 # Location of test files
 TESTDIR=`dirname -- "$( readlink -f -- "$0"; )"`
 
+# Remove old tests resulst
+rm -f $TESTDIR/results/*.txt
+
+# Run test
 # $THERMUS is not yet defined
 # So the argument is single-quoted to avoid expansion
 $RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/all_predictions.C -b -q'

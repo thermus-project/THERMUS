@@ -89,9 +89,9 @@ void prediction(TString filename,Bool_t decayfix) {
     // Open a text file to store the results, containing modely value in the name
     TString foutName;
     Int_t df_i = decayfix?1:0;
-    foutName.Form("test/results/result_%d.txt",df_i);
-    // Create directories test/results if they do not exist
-    gSystem->Exec("mkdir -p test/results");
+    foutName.Form("tests/results/result_%d.txt",df_i);
+    // Create directories tests/results if they do not exist
+    gSystem->Exec("mkdir -p tests/results");
     FILE * fout = fopen(foutName,"w");
     if (!fout) {
         printf("ERROR: cannot open file result_%d.txt\n",df_i);

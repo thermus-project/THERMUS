@@ -9,7 +9,6 @@ EXTRA_OPTIONS="$@"
 SCRIPTDIR=$BASEDIR/scripts
 
 $SCRIPTDIR/inplace_build.sh $EXTRA_OPTIONS
-rm -f $BASEDIR/brut_result.txt $BASEDIR/result.txt
 
 $TESTDIR/inplace_test.sh $BASEDIR/run_thermus
 
