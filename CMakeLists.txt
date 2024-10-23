@@ -62,7 +62,7 @@ if(NOT WITHOUT_TEX_DOC)
   add_subdirectory(doc)
 endif()
 add_subdirectory(scripts)
-add_subdirectory(test)
+add_subdirectory(tests)
 
 # Also publish the README file
 set(README_FILE ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
