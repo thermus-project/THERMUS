@@ -1,3 +1,8 @@
+INFO: constraining B/2Q = 1.2683
+INFO: quantum Stat and Resonance Width are included 
+INFO: radius = 10.5 fm, volume = 4849.06 fm^3
+
+
  predicted values
  id 	 name 		 mod. value 
  211 	 pi+ PREDICTION 	 656.186843 
