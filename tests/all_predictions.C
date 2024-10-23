@@ -25,7 +25,7 @@ TString Setlist[1]={
 const Int_t DecayFix[2] = {false,true};
 
 // Declaration of prediction function
-void prediction(TString filename=THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt",Int_t modely=1);
+void prediction(TString filename=THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt", Bool_t decayfix=true);
 
 void all_predictions() {
     // Loop through all models
