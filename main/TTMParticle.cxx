@@ -45,6 +45,7 @@ TTMParticle::TTMParticle()
   fRadius = 0.;
   fDecaySummary = new TList();
   fDecayChannels = new TList();
+  fDecayChainProcessed = false;  //FIX(V. Vovchenko): Added to fix decay contributions
 }
 
 //__________________________________________________________________________
