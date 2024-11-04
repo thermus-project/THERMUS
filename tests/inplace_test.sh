@@ -47,7 +47,7 @@ RES_FAILED=0
 # For each file in the result directory, test if it's same as in the expected directory
 for ff in `ls $RESULTDIR/*.txt`; do
   f=`basename $ff`
-  diff tests/results/$f $THERMUS/share/doc/Thermus/tests/expected_results/$f
+  diff $RESULTDIR/$f $THERMUS/share/doc/Thermus/tests/expected_results/$f
   if [ $? -ne 0 ]; then
     echo "TEST FAILED for file $f"
     RES_FAILED=1
