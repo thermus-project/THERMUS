@@ -27,11 +27,14 @@ else
     exit 1
 fi
 
+# We need the THERMUS variable for the rest of the script
+`$RUN_THERMUS --getenv`
+
 # Number of test files
 nbf=`compgen -G "$RESULTDIR/*.txt" | wc -l`
 
 # Number of expected files
-nbe=`compgen -G "$TESTDIR/expected_results/*.txt" | wc -l`
+nbe=`compgen -G "$THERMUS/share/doc/Thermus/tests/expected_results/*.txt" | wc -l`
 
 # All comparisons will be performed, even if some failed, this is to ensure better debugging
 NBF_FAILED=0
@@ -44,7 +47,7 @@ RES_FAILED=0
 # For each file in the result directory, test if it's same as in the expected directory
 for ff in `ls $RESULTDIR/*.txt`; do
   f=`basename $ff`
-  diff $RESULTDIR/$f $TESTDIR/expected_results/$f
+  diff tests/results/$f $THERMUS/share/doc/Thermus/tests/expected_results/$f
   if [ $? -ne 0 ]; then
     echo "TEST FAILED for file $f"
     RES_FAILED=1
