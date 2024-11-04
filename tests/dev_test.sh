@@ -10,5 +10,11 @@ SCRIPTDIR=$BASEDIR/scripts
 
 $SCRIPTDIR/inplace_build.sh $EXTRA_OPTIONS
 
+# Do not run tests if build failed
+if [ $? -ne 0 ]; then
+    echo "Build failed, aborting test"
+    exit 1
+fi
+
 $TESTDIR/inplace_test.sh $BASEDIR/run_thermus
 

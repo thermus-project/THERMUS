@@ -7,5 +7,16 @@ ARGUMENTS="$@"
 # Set at build time
 export THERMUS=@THERMUS@
 export THERMUS_LIB=$THERMUS/@THERMUS_LIB@
+
+# All arguments are passed to run_thermus.C
+# But for --getenv that we'll handle locally
+if [ "$1" = "--getenv" ]; then
+    echo "export THERMUS=$THERMUS"
+    echo "export THERMUS_LIB=$THERMUS_LIB"    
+    exit 0
+fi
+
+# Run THERMUS
+ARGUMENTS="$@"
 root $THERMUS/share/Thermus/root/use_thermus.C $ARGUMENTS
 

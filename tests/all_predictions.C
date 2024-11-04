@@ -18,7 +18,7 @@
 // Always better to start with a verbose mode
 Bool_t debugMode=1; // verbose with debugMode=1
 
-void prediction(){
+void all_predictions(){
 
   Bool_t constrainMuQ = 1, quantRes = 1;
   // **************************************************
