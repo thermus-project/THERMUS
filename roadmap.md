@@ -2,14 +2,14 @@
 
 ## Needed for 4.0
 ### Still to do
+- LICENSE: use GPL, to be compatible wirth GSL and Root.
 - Up to date doc (for install and use)
 - No documentation build by default
 - code beautifying (linter)
 - Better test for TXT
 - Stamped TXT set
-- Merging Boris changes
 - Merging Natasha changes
-- Having MacOS tests to work.
+- Checksum the distributed particle set
 
 ### Maybe
 - THERMUS and THERMUS_LIB
@@ -21,20 +21,22 @@ We could also hardcode THERMUS_LIB in use_thermus.C, making it reusable on a giv
 For now, kept as it is.
 
 ### Already done:
+- Merging Boris changes
 - Fix rdict.pcm install
 - Fix particle install
-- simplify rootlogon
-- Adding macOS in autotest
-- Autotest in git
-- add tex doc
+- LaTeX doc working (on Linux)
+- removed rootlogon (replaced by use_thermus.C)
+- Run on MacOS (without LaTeX doc generation)
+- Autotests by githlab workflow
 - Library path unders Thermus
-- Unify and rename rootlogons
+- Scripts in their own subdir
+- Removed support for Makefile build
+
 
 ## Before next upstream push
 ### Already done
 - build on macos (without doc)
 - roadmap as an md file
-
 
 ## Later
 - Fix xxHash test
