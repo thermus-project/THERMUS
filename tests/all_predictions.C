@@ -24,12 +24,12 @@ void all_predictions(){
   // **************************************************
   // First, definition the particle list
   // and their properties (and decays):
-//  TTMParticleSet set(THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
-//  set.InputDecays(THERMUS+"/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
+  TTMParticleSet set(THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
+  set.InputDecays(THERMUS+"/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
   
-   TTMParticleSet set("local/share/Thermus/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
+  // TTMParticleSet set("local/share/Thermus/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
+  // set.InputDecays("/local/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
 
-  set.InputDecays("/local/share/Thermus/particles");  // here true means the decays are scaled to sum(BR) = 100%
   // **************************************************
   // Second, choice of formalism:
   // - We want here a Grand Canonical Treatment so we use
@@ -81,7 +81,8 @@ void all_predictions(){
   // Fifth, Create an instance as if a fit is performed
   // -> Branch the fake experimental values
 
-  TTMThermalFitBSQ fit(&set,&par,"local/share/doc/Thermus/tests/prediction.txt");
+  TTMThermalFitBSQ fit(&set,&par,THERMUS+"/share/doc/Thermus/tests/prediction.txt");
+  //TTMThermalFitBSQ fit(&set,&par,"local/share/doc/Thermus/tests/prediction.txt");
 
   // -> Turn off default quantum statistics and resonance width treatment
   if(!quantRes){
