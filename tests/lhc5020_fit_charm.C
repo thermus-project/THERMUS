@@ -110,7 +110,7 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
   // Fifth, Create an instance of the Fit
   // -> Branch the experimental values
   //  TTMThermalFitBSQ fit(&set,&par,"rhic200_exp.txt");
-  char fileName[60] = "./test/lhc5020_final_0_single_charm.txt";
+  char fileName[60] = "./tests/lhc5020_final_0_single_charm.txt";
   //char fileName[60] = "./lhcAP_cleaned_no_anti.txt";
   
   printf("INFO: ***** this is the input filename:  %s ***** \n",fileName);
