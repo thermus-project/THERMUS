@@ -6,7 +6,7 @@ RUN_THERMUS=$1
 # Location of test files
 TESTDIR=`dirname -- "$( readlink -f -- "$0"; )"`
 
-RESULTDIR="$TESTDIR/results"
+RESULTDIR=`pwd`/tests/results
 # Remove old tests resulst
 rm -f $RESULTDIR/*.txt
 
@@ -16,8 +16,12 @@ mkdir -p $RESULTDIR
 # $THERMUS is not yet defined
 # So the argument is single-quoted to avoid expansion
 $RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/all_predictions.C -b -q' > $RESULTDIR/brut_result.txt
+# Brut results have to be massaged to extract the final part we compare:
 sed -n '/predicted values/,$p' $RESULTDIR/brut_result.txt > $RESULTDIR/result.txt
 rm $RESULTDIR/brut_result.txt # Needed as we count output files
+
+# LHC5020 test
+$RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/lhc5020_fit_charm.C -b -q'
 
 # If there are no results files, test failed
 if compgen -G "$RESULTDIR/*.txt" > /dev/null; then
