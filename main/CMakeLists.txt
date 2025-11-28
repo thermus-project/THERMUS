@@ -1,17 +1,81 @@
 # CMakeLists.txt in main
 
-FILE(GLOB SRCFILES *.cxx)
-FILE(GLOB HFILES TT*.h)
+set (HFILES
+    TTMDecay.h
+    TTMDecayChannel.h
+    TTMDensObj.h
+    TTMIDObj.h
+    TTMParameter.h
+    TTMParameterSet.h
+    TTMParameterSetBQ.h
+    TTMParameterSetBSQ.h
+    TTMParameterSetCanBSQ.h
+    TTMParameterSetSQ.h
+    TTMParticle.h
+    TTMParticleSet.h
+    TTMYield.h
+    TThermalFit.h
+    TThermalFitBQ.h
+    TThermalFitBSQ.h
+    TThermalFitCanBSQ.h
+    TThermalFitSQ.h
+    TThermalModel.h
+    TThermalModelBQ.h
+    TThermalModelBSQ.h
+    TThermalModelCanBSQ.h
+    TThermalModelSQ.h
+    TThermalParticle.h
+    TThermalParticleBQ.h
+    TThermalParticleBSQ.h
+    TThermalParticleCanBSQ.h
+    TThermalParticleSQ.h
+)
 
-# That line is needed for obscure ROOT reasons (but shouldn't)
-SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+set(SRCFILES
+    TTMDecay.cxx
+    TTMDecayChannel.cxx
+    TTMDensObj.cxx
+    TTMIDObj.cxx
+    TTMParameter.cxx
+    TTMParameterSet.cxx
+    TTMParameterSetBQ.cxx
+    TTMParameterSetBSQ.cxx
+    TTMParameterSetCanBSQ.cxx
+    TTMParameterSetSQ.cxx
+    TTMParticle.cxx
+    TTMParticleSet.cxx
+    TTMYield.cxx
+    TThermalFit.cxx
+    TThermalFitBQ.cxx
+    TThermalFitBSQ.cxx
+    TThermalFitCanBSQ.cxx
+    TThermalFitSQ.cxx
+    TThermalModel.cxx
+    TThermalModelBQ.cxx
+    TThermalModelBSQ.cxx
+    TThermalModelCanBSQ.cxx
+    TThermalModelSQ.cxx
+    TThermalParticle.cxx
+    TThermalParticleBQ.cxx
+    TThermalParticleBSQ.cxx
+    TThermalParticleCanBSQ.cxx
+    TThermalParticleSQ.cxx
+)
 
-add_library(THERMUS SHARED ${SRCFILES})
+ROOT_STANDARD_LIBRARY_PACKAGE(
+        THERMUS
+    HEADERS
+        ${HFILES}
+    SOURCES
+        ${SRCFILES}
+    DEPENDENCIES
+        ${ROOT_LIBRARIES})
+
 set_target_properties(THERMUS PROPERTIES PUBLIC_HEADER "${HFILES}")
-target_link_libraries(THERMUS ${ROOT_LIBRARIES} GSL::gsl GSL::gslcblas)
-
-target_include_directories(THERMUS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-ROOT_GENERATE_DICTIONARY(ThermusDict ${HFILES} LINKDEF THERMUSClassesLinkDef.h MODULE THERMUS)
 
 install(TARGETS THERMUS
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_PROJECT_NAME})
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(FILES ${CMAKE_BINARY_DIR}/main/libTHERMUS_rdict.pcm 
+    ${CMAKE_BINARY_DIR}/main/libTHERMUS.rootmap
+    DESTINATION ${CMAKE_INSTALL_LIBDIR})
