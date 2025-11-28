@@ -14,18 +14,22 @@ endif ( NOT GSL_FOUND )
 #endif ( NOT xxHash_FOUND )
 
 # Check ROOT and Mathmore
-FIND_PACKAGE( ROOT REQUIRED COMPONENTS MathMore )
+#FIND_PACKAGE( ROOT REQUIRED COMPONENTS MathMore )
+FIND_PACKAGE( ROOT CONFIG REQUIRED COMPONENTS MathMore )
 if ( NOT ROOT_FOUND )
 message(FATAL_ERROR "ROOT is required but missing !")
 endif ( NOT ROOT_FOUND )
+
+include(${ROOT_USE_FILE})
 
 #GNU like structure
 include(GNUInstallDirs)
 # Put libs under Thermus in libdir
 set(CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR}/Thermus)
+set(CMAKE_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR}/Thermus)
 
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
-include(${ROOT_USE_FILE})
+#include(${ROOT_USE_FILE})
 
 include_directories("include" "main" ${ROOT_INCLUDE_DIRS} ${GSL_INCLUDE_DIRS})
 
