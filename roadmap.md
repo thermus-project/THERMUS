@@ -6,6 +6,7 @@
 - Up to date doc (for install and use)
 - No documentation build by default
 - code beautifying (linter)
+- Code restructuring around models
 - Better test for TXT
 - Stamped TXT set
 - Merging Natasha changes
@@ -34,6 +35,10 @@ For now, kept as it is.
 
 
 ## Before next upstream push
+- Include lhc5020 tests
+- Tests on all working sets
+- restructure code
+
 ### Already done
 - build on macos (without doc)
 - roadmap as an md file
