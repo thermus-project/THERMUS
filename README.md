@@ -1,16 +1,14 @@
 # THERMUS
 A Thermal Model Package for ROOT v4
 
-Contacts
-========
+## Contacts
 
 Thermus.Project@cern.ch
 Thermus.Support@cern.ch
 
-TL-DR
-=====
+## TL-DR
 
-## Inplace install and run
+### Inplace install and run
 - Ensure ROOT (https://root.cern.ch) is installed and configured in your current shell.
 - Build and configure for local run:
     ```bash
@@ -34,16 +32,14 @@ main        - models and main classes
 particles   - list of particles and decay properties
 test        - exemples and basic tests
 
-Environment variables
-=====================
+## Environment variables
 
 The environment variables ROOTSYS and THERMUS should be set and exported
 respectively with the proper <pathnames> (checked by cmakethermus.sh):
     $ROOTSYS should point to the directory of the root installation
     $THERMUS should point to the directory containing the THERMUS code
 
-Compiling THERMUS and running test programs
-===========================================
+## Compiling THERMUS and running test programs
 
 Configuration and compilation should be done using CMake: source cmakethermus.sh
 (Please note that the provided makefiles are not recommended).

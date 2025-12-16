@@ -1,28 +1,27 @@
 #!/bin/bash -x
-# Inplace test for THERMUS
+# Installed test for THERMUS
 # As we don't know where run_thermus is located, we need to pass it as an argument
-RUN_THERMUS=$1
+`run_thermus --getenv`
 
 # Location of test files
-TESTDIR=`dirname -- "$( readlink -f -- "$0"; )"`
+TESTDIR=$THERMUS/share/doc/Thermus/tests
 
 RESULTDIR=`pwd`/tests/results
+mkdir -p $RESULTDIR
 # Remove old tests resulst
 rm -f $RESULTDIR/*.txt
 
 # Create test results directory
 mkdir -p $RESULTDIR
 
-# $THERMUS is not yet defined
 # So the argument is single-quoted to avoid expansion
-$RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/all_predictions.C -b -q' > $RESULTDIR/brut_result.txt
+run_thermus $THERMUS/share/doc/Thermus/tests/all_predictions.C -b -q > $RESULTDIR/brut_result.txt
 # Brut results have to be massaged to extract the final part we compare:
 sed -n '/predicted values/,$p' $RESULTDIR/brut_result.txt > $RESULTDIR/result.txt
 rm $RESULTDIR/brut_result.txt # Needed as we count output files
 
 # LHC5020 test
-$RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/lhc5020_fit_charm.C -b -q'
-
+run_thermus '$THERMUS/share/doc/Thermus/tests/lhc5020_fit_charm.C -b -q'
 # If there are no results files, test failed
 if compgen -G "$RESULTDIR/*.txt" > /dev/null; then
     echo "Some results files were found"
@@ -30,9 +29,6 @@ else
     echo "TEST FAILED: no results files were found"
     exit 1
 fi
-
-# We need the THERMUS variable for the rest of the script
-`$RUN_THERMUS --getenv`
 
 # Number of test files
 nbf=`compgen -G "$RESULTDIR/*.txt" | wc -l`
